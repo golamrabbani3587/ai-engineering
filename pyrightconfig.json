@@ -1,0 +1,10 @@
+{
+  "executionEnvironments": [
+    {
+      "root": "ai-engineering",
+      "extraPaths": [
+        "ai-engineering"
+      ]
+    }
+  ]
+}
