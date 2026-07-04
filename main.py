@@ -5,6 +5,7 @@ from db.database import Base
 from db.database import engine
 
 from api.routes.user import router as user_router
+from api.routes.search import router as search_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -19,6 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(user_router)
+app.include_router(search_router)
 
 @app.get("/")
 def read_root():

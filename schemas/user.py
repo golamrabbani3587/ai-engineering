@@ -8,7 +8,7 @@ from pydantic import StringConstraints
 class UserCreate(BaseModel):
     name: str
     email: EmailStr
-    password: str
+    password: Annotated[str, StringConstraints(max_length=72)]
 
 
 class UserResponse(BaseModel):
