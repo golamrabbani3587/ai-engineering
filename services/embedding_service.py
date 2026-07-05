@@ -6,8 +6,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 def create_embedding(text: str):
-    return model.encode(text).tolist()
-
+    return model.encode(text)
 
 def cosine_similarity(a, b):
     a = np.array(a)

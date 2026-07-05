@@ -4,6 +4,12 @@ from services.embedding_service import (
     cosine_similarity
 )
 
+
+from services.vector_service import (
+    search_documents
+)
+
+
 router = APIRouter(
     prefix="/search",
     tags=["Search"]
@@ -28,24 +34,8 @@ for doc in documents:
 
 @router.get("/")
 def search(query: str):
-    query_embedding = create_embedding(query)
+    return search_documents(query)
 
-    scores = []
-
-    for doc in doc_embeddings:
-        score = cosine_similarity(
-            query_embedding,
-            doc["embedding"]
-        )
-
-        scores.append({
-            "text": doc["text"],
-            "score": float(score)
-        })
-
-    scores.sort(
-        key=lambda x: x["score"],
-        reverse=True
-    )
-
-    return scores[:3]
+# router.get("/vector")
+# def search(query:str):
+#     return search_documents(str)
